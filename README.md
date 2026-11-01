@@ -2,7 +2,7 @@
 
 Run Workyol from Claude: WhatsApp campaigns, one inbox for WhatsApp, Instagram and Messenger, auto-replies, comment-to-DM, and scheduled Reels, LinkedIn posts and YouTube videos.
 
-![Workyol](docs/screenshot.png)
+![Workyol: connect Claude in one click](docs/screenshot.webp)
 
 ## Official APIs. No ban risk.
 
@@ -41,7 +41,7 @@ Zip the folder (the zip must contain `SKILL.md`). Go to Settings, Capabilities, 
 
 ## Connect the MCP server
 
-In Workyol: **Help**, then the card "Use Workyol from Claude or another AI assistant", then **Copy**. It gives the exact settings for your computer.
+In Workyol: **Connections**, then the tab **AI assistants (Claude, ChatGPT…)**, then **Connect** next to your app (Claude Desktop, Claude Code, Cursor, VS Code…). Restart that app once. Workyol must stay open while the assistant works.
 
 For Claude Code, the command looks like this (change the path to your Workyol folder):
 

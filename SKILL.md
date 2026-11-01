@@ -21,7 +21,7 @@ Do not use it for people who did not agree to be contacted.
 ## Requirement
 
 1. Workyol is installed and **running** on the computer (it opens at `localhost:4747`).
-2. Workyol's MCP server is connected to this assistant (see README: in Workyol, Help, "Use Workyol from Claude or another AI assistant", Copy).
+2. Workyol's MCP server is connected to this assistant (see README: in Workyol, Connections, AI assistants, Connect next to the app).
 
 **First step in every session:** call `check_setup` (what is done / missing in Set up) and `get_overview` (contacts, messages, unread replies, waiting posts). If the tools do not exist or answer "Workyol is not running", stop and tell the person to start Workyol and connect the MCP server. Do not guess.
 
