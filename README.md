@@ -53,6 +53,8 @@ If your dashboard has a password, also set `WORKYOL_PASSWORD`. Workyol must be r
 
 Then ask Claude: "Check my Workyol setup."
 
+**Tip:** Claude can use the Workyol tools without opening this skill. To get its step-by-step guide, say so at the start of your request, for example: "First load the workyol skill, then check my replies."
+
 ## Example prompts
 
 - Check my Workyol setup and tell me what is missing.

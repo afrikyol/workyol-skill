@@ -1,6 +1,6 @@
 ---
 name: workyol
-description: Runs Workyol from Claude: prepares WhatsApp campaigns to opted-in lists, reads the WhatsApp/Instagram/Messenger inbox and drafts replies, adds auto-replies and comment-to-DM rules, and schedules Reels, photos, LinkedIn posts and YouTube videos. Use when the person asks about WhatsApp campaigns, an Instagram or Messenger inbox, auto-replies, comment-to-DM, or scheduling social posts with Workyol.
+description: Required guide for every Workyol task. Load this before calling any Workyol MCP tool, because it holds the setup check, the confirm steps and the opt-in rules. Runs Workyol from Claude: prepares WhatsApp campaigns to opted-in lists, reads the WhatsApp/Instagram/Messenger inbox and drafts replies, adds auto-replies and comment-to-DM rules, and schedules Reels, photos, LinkedIn posts and YouTube videos. Use when the person asks about WhatsApp campaigns, an Instagram or Messenger inbox, auto-replies, comment-to-DM, or scheduling social posts with Workyol.
 ---
 
 # Workyol
