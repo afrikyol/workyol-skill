@@ -10,6 +10,13 @@ Workyol uses Meta's official platforms: the WhatsApp Business Platform (Cloud AP
 
 Bans come from messaging people who did not agree. Workyol works only with opted-in contacts, handles STOP for you, and the assistant always asks before it sends or publishes.
 
+## Coming soon
+
+- **Google reviews.** See the reviews of your Google Business Profile in Workyol, get an alert for each new review, and answer in the reviewer's language with an AI draft that you check before it is posted. Schedule Google posts (offers, events, news) next to your Instagram, Facebook and LinkedIn posts. Built on Google's official Business Profile API, waiting for Google's approval.
+- **YouTube for everyone.** Scheduled YouTube uploads open to all customers once Google's review is done.
+
+When these arrive, this skill gets new tools: update it with `git pull`.
+
 ## What you need
 
 - The **Workyol app**, installed and running on your computer (Windows, Mac or Linux). Free 7-day trial: https://workyol.com/?ref=skill-github
@@ -72,14 +79,17 @@ MIT, Copyright (c) 2026 Afrikyol, LLC.
 ## Français
 
 Workyol pilote WhatsApp, Instagram et Messenger depuis Claude : campagnes WhatsApp vers des contacts qui ont donné leur accord, boîte de réception unique, réponses automatiques, commentaire vers message privé, et publications programmées (Reels, LinkedIn). Il utilise les API officielles de Meta : pas de risque de bannissement lié à des outils non officiels. Rien n'est envoyé sans votre accord.
+Bientôt : les avis Google (voir les avis, alerte à chaque nouvel avis, réponse proposée par l'IA que vous validez) via l'API officielle de Google.
 Application et essai gratuit : https://workyol.com/?ref=skill-github
 
 ## Türkçe
 
 Workyol, Claude ile WhatsApp, Instagram ve Messenger'ı yönetir: onay vermiş kişilere WhatsApp kampanyaları, tek gelen kutusu, otomatik yanıtlar, yorumdan özel mesaja ve zamanlanmış paylaşımlar (Reels, LinkedIn). Meta'nın resmi API'lerini kullanır; resmi olmayan araçlardan kaynaklanan yasaklanma riski yoktur. Siz onaylamadan hiçbir şey gönderilmez.
+Yakında: Google yorumları (yorumları görme, her yeni yorumda uyarı, sizin onayladığınız yapay zekâ yanıt taslağı), Google'ın resmi API'si ile.
 Uygulama ve ücretsiz deneme: https://workyol.com/?ref=skill-github
 
 ## العربية
 
 يتيح Workyol التحكم في واتساب وإنستغرام وماسنجر من Claude: حملات واتساب لجهات الاتصال التي وافقت على تلقي الرسائل، وصندوق وارد واحد، وردود تلقائية، والتعليق إلى رسالة خاصة، ونشر مجدول (Reels وLinkedIn). يستخدم واجهات Meta الرسمية، فلا خطر حظر بسبب أدوات غير رسمية. لا يُرسل شيء قبل موافقتك.
+قريبًا: تقييمات Google (عرض التقييمات، تنبيه عند كل تقييم جديد، ورد مقترح بالذكاء الاصطناعي تراجعه قبل النشر) عبر واجهة Google الرسمية.
 التطبيق وتجربة مجانية: https://workyol.com/?ref=skill-github
