@@ -1,11 +1,11 @@
 ---
 name: workyol
-description: Required guide for every Workyol task. Load this before calling any Workyol MCP tool, because it holds the setup check, the confirm steps and the opt-in rules. Runs Workyol from Claude: prepares WhatsApp campaigns to opted-in lists, reads the WhatsApp/Instagram/Messenger inbox and drafts replies, adds auto-replies and comment-to-DM rules, and schedules Reels, photos, LinkedIn posts and YouTube videos. Use when the person asks about WhatsApp campaigns, an Instagram or Messenger inbox, auto-replies, comment-to-DM, or scheduling social posts with Workyol.
+description: Required guide for every Workyol task. Load this before calling any Workyol MCP tool, because it holds the setup check, the confirm steps and the opt-in rules. Runs Workyol from Claude: prepares WhatsApp campaigns to opted-in lists, reads the WhatsApp/Instagram/Messenger inbox and drafts replies, adds auto-replies and comment-to-DM rules, schedules Reels, photos, LinkedIn posts and YouTube videos, and answers Google reviews, schedules Google posts and reads Google Business Profile numbers. Use when the person asks about WhatsApp campaigns, an Instagram or Messenger inbox, auto-replies, comment-to-DM, Google reviews or Google posts, or scheduling social posts with Workyol.
 ---
 
 # Workyol
 
-Workyol is a program that runs on the person's own computer. It works with Meta's official platforms (WhatsApp Business Platform, Instagram, Messenger), with LinkedIn's API and, where open, YouTube's API. This skill tells you how to use its MCP tools.
+Workyol is a program that runs on the person's own computer. It works with Meta's official platforms (WhatsApp Business Platform, Instagram, Messenger), with LinkedIn's API, Google's Business Profile API (Google reviews and Google posts) and, where open, YouTube's API. This skill tells you how to use its MCP tools.
 
 ## When to use
 
@@ -14,6 +14,7 @@ Use this skill when the person wants to:
 - read unread replies (WhatsApp, Instagram, Messenger) and answer them;
 - add keyword auto-replies, or comment-to-private-message rules;
 - schedule Reels, photos or carousels (Instagram and Facebook), LinkedIn posts, or YouTube videos;
+- read and answer Google reviews, schedule Google posts, or see Google Search and Maps numbers;
 - check their Workyol setup or numbers.
 
 Do not use it for people who did not agree to be contacted.
@@ -64,6 +65,13 @@ LinkedIn (the person's own profile)
 YouTube (only where YouTube is open for this licence; at the time of writing it is not open to customers yet, and the tools then answer "YouTube is not open yet")
 - `youtube_status`, `youtube_playlists`, `youtube_list`, `youtube_schedule` (MP4/MOV up to 2 GB; title, description, tags, `publish_at`, `privacy`, `thumbnail_path`, `playlist`, `first_comment`; 3 uploads a day per channel, extra videos wait for the next day), `youtube_delete`.
 
+Google (the Business Profile connected in Workyol → Google reviews; one Google connection per Workyol account)
+- `google_reviews_list`: reviews of one location, newest first: stars, author, date, text, Google's translation, the business's reply. Parameters: `location` (id or part of the name; default the first), `filter` (`unanswered` default, `all`, `negative` = 1 to 3 stars). It also returns `location_id`, `other_locations`, the average, the total and `review_link_for_customers`. If it answers `connected: false`, tell the person to open Workyol → Google reviews → Connect Google Business Profile, with the Google account that owns or manages the business.
+- `google_reviews_reply`: post or replace the public reply under one review. Parameters: `review_id`, `text` (plain text), `confirm`. Nobody can edit or delete the customer's review itself.
+- `google_posts_schedule`: an update on the Business Profile (Google Search and Maps). Parameters: `text` (max 1,500 characters, no phone number: Google rejects it), `at` (ISO 8601 with time zone), `locations` (ids; empty = every location), `button` (LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP need `button_url`; CALL calls the profile's number), `confirm`. Workyol must be running at that time. Photos are added in the Workyol screen (Posts → Google posts), not through this tool.
+- `google_posts_list`: scheduled, published and failed Google posts, with links and Google's reason for a rejection.
+- `google_insights`: per location, for a period (`from`, `to`, YYYY-MM-DD; default the last 30 days): views on Search and Maps, calls, website clicks, direction requests, messages, bookings, plus the reviews of the period (count, average, answered) and the all-time average. Google gives the numbers about 3 days late, so the last days can be 0.
+
 ## Workflows
 
 ### Prepare a WhatsApp campaign
@@ -94,6 +102,20 @@ YouTube (only where YouTube is open for this licence; at the time of writing it 
 2. Write the posts in plain text (no markdown or bold). Show them all with their dates.
 3. After a yes, `linkedin_schedule_posts` with `confirm: true`.
 
+### Answer Google reviews
+1. `google_reviews_list` (default `unanswered`). For several locations, call it again with each name from `other_locations`.
+2. Draft one reply per review **in the language of the review** (use `google_translation` to understand it, but answer in the original language). Short, warm, personal: thank by first name, mention one thing they wrote. For 1 to 3 stars: apologise without arguing, invite them to contact the business directly; never invent facts, offers, refunds or promises the person did not give you.
+3. Show every draft as a table (author, stars, review, reply). Post each one with `google_reviews_reply` and `confirm: true` only after the person approves it. Replies are public on Google.
+
+### Schedule Google posts
+1. `google_reviews_list` to get the location ids, `google_posts_list` to see what is waiting.
+2. Write the text (no phone number; use the CALL button instead), pick a button and the times with time zone.
+3. Show every post. After a yes, `google_posts_schedule` with `confirm: true`. Remind the person that Workyol must be running at those times.
+
+### Google numbers for a month
+1. `google_insights` with `from` and `to`.
+2. Report per location: views (Search + Maps), calls, website clicks, directions, new reviews and how many have a reply. For an Excel file, the person uses Reports in Workyol.
+
 ## Safety rules (follow them always)
 
 - **Nothing is sent, published or changed until the person says yes.** Call the tool without `confirm` first, show the summary, and pass `confirm: true` only after a clear yes to that exact action.
@@ -103,6 +125,8 @@ YouTube (only where YouTube is open for this licence; at the time of writing it 
 - Workyol's own rules still apply: the 24-hour WhatsApp window, opt-outs, approved templates, licence limits, and Meta's daily limits.
 - Meta only allows a business to answer people who wrote first on Instagram and Messenger. There are no campaigns on those channels.
 - Do not promise results such as "no ban". Say only that Workyol uses the official APIs.
+- Google reviews: never write fake reviews, never offer a gift or discount for a review, and never ask only happy customers (Google forbids it). To ask for reviews, share `review_link_for_customers` with every customer the same way, and on WhatsApp only to opted-in lists with an approved template.
+- Google partnership: Workyol uses Google's official API; do not say Google endorses or partners with Workyol.
 
 ## Example prompts
 
@@ -114,3 +138,6 @@ YouTube (only where YouTube is open for this licence; at the time of writing it 
 - "Schedule these 5 videos as Reels on Instagram and Facebook, one each day at 18:00."
 - "Import the content plan from the folder C:\plans\november and show me the preview."
 - "Schedule 12 LinkedIn posts about dental care, two per week, and show them to me first."
+- "Show my unanswered Google reviews and draft a reply to each, in the reviewer's language."
+- "Schedule a Google post for all my locations on Friday at 09:00 with a Call now button."
+- "How many people found us on Google Maps last month, and how many called?"
